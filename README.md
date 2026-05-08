@@ -2,25 +2,64 @@
 
 > An AI-powered assistant that translates natural language into precise SQL queries, executed against a live Jobs Data Warehouse and returned as beautiful, human-readable results.
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi" />
+  <img src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white" />
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
+  <img src="https://img.shields.io/badge/Microsoft_SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white" />
+  <img src="https://img.shields.io/badge/Google_Gemini-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white" />
+</p>
+
 ---
 
 ## Architecture Overview
 
 ```mermaid
 graph TD
-    User([User]) <--> Frontend[React Frontend]
-    Frontend <--> API[FastAPI Backend]
-
-    subgraph AI_Agent_Layer["AI Agent Layer (LangGraph)"]
-        API <--> Agent[ReAct Agent]
-        Agent <--> LLM{Google Gemini / Ollama}
-        Agent <--> SQL_Tool[SQL Database Toolkit]
+    %% Node Definitions
+    User(["👤 User"])
+    Frontend(["⚛️ React / Tailwind"])
+    API(["⚡ FastAPI / Python"])
+    
+    subgraph AI_Layer ["&nbsp;AI Agent & Logic&nbsp;"]
+        Agent(["🦜🔗 LangGraph Agent"])
+        LLM(["🧠 Gemini / Ollama"])
     end
 
-    subgraph Data_Layer["Data Layer"]
-        SQL_Tool <--> DB[(SQL Server — Data Warehouse)]
+    subgraph Data_Layer ["&nbsp;Database&nbsp;"]
+        DB(["🗄️ SQL Server"])
     end
+
+    %% Connections
+    User <--> Frontend
+    Frontend <--> API
+    API <--> Agent
+    Agent <--> LLM
+    Agent <--> DB
+
+    %% Styling
+    style User fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style Frontend fill:#61DAFB,stroke:#333,stroke-width:2px,color:#000
+    style API fill:#009485,stroke:#333,stroke-width:2px,color:#fff
+    style Agent fill:#1C3C3C,stroke:#333,stroke-width:2px,color:#fff
+    style LLM fill:#8E75B2,stroke:#333,stroke-width:2px,color:#fff
+    style DB fill:#CC2927,stroke:#333,stroke-width:2px,color:#fff
 ```
+
+## System Preview
+
+<p align="center">
+  <b>Frontend Interface</b><br>
+  <img src="docs/frontend.png" width="800" alt="Frontend Interface Preview" />
+</p>
+
+<p align="center">
+  <b>Backend Processing</b><br>
+  <img src="docs/backend.png" width="800" alt="Backend Processing Preview" />
+</p>
 
 ---
 
